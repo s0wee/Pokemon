@@ -45,11 +45,9 @@ class PokemonCard(BaseModel):
         ('Fairy', 'Fairy'),
     )
     name = models.CharField(max_length=100, null=True, blank=True)
-    rarity = models.CharField(
-        max_length=100, null=True, blank=True, choices=RARITY_CHOICES)
+    rarity = models.CharField(max_length=100, null=True, blank=True, choices=RARITY_CHOICES)
     hp = models.IntegerField(null=True, blank=True)
-    card_type = models.CharField(
-        max_length=100, null=True, blank=True, choices=CARDTYPE_CHOICES)
+    card_type = models.CharField(max_length=100, null=True, blank=True, choices=CARDTYPE_CHOICES)
     atack = models.CharField(max_length=100, null=True, blank=True)
     description = models.CharField(max_length=250, null=True, blank=True)
     weakness = models.CharField(max_length=250, null=True, blank=True)
@@ -61,3 +59,4 @@ class PokemonCard(BaseModel):
 class Collection(BaseModel):
     card = models.ForeignKey(PokemonCard, blank=True, null=True, on_delete=models.CASCADE)
     trainer = models.ForeignKey(Trainer, blank=True, null=True, on_delete=models.CASCADE)
+    collection_date = models.DateField()
